@@ -1,0 +1,40 @@
+<!--
+    CSharpLearning.csproj - C#学习项目文件
+    项目类型：SDK风格控制台应用
+    目标框架：.NET 6.0（支持长期支持LTS）
+    主要特性：
+        - 使用顶级语句（Top-level statements）
+        - 文件范围命名空间（File-scoped namespaces）
+        - 可空引用类型（Nullable reference types）
+        - 隐式using（Implicit usings）
+--><!-- 根元素：Project，Sdk属性指定使用.NET SDK风格的项目 -->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- 属性组：定义项目的全局配置 -->
+  <PropertyGroup>
+    <!-- 输出类型：控制台应用程序 -->
+    <OutputType>Exe</OutputType>
+
+    <!-- 目标框架：.NET 6.0（LTS版本，长期支持） -->
+    <TargetFramework>net6.0</TargetFramework>
+
+    <!-- 启用可空引用类型：让编译器检查null安全性，减少空引用异常 -->
+    <Nullable>enable</Nullable>
+
+    <!-- 隐式using：自动导入常用命名空间，如System、System.Collections.Generic等 -->
+    <ImplicitUsings>enable</ImplicitUsings>
+
+    <!-- 语言版本：使用最新的C#版本（.NET 6对应C# 10） -->
+    <LangVersion>latest</LangVersion>
+
+    <!-- 程序集名称：编译后生成的可执行文件名称 -->
+    <AssemblyName>CSharpLearning</AssemblyName>
+
+    <!-- 根命名空间：项目中所有类型的默认命名空间前缀 -->
+    <RootNamespace>CSharpLearning</RootNamespace>
+
+    <!-- 允许不安全代码：Advanced模块中演示指针操作需要 -->
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+</Project>

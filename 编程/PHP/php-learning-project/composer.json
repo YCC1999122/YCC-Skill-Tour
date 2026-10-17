@@ -1,0 +1,49 @@
+{
+    // ============================================================
+    // Composer 配置文件 - PHP 学习项目
+    // ============================================================
+    // Composer 是 PHP 的依赖管理工具，用于管理项目的依赖包和自动加载
+    // 运行 `composer install` 后会生成 vendor/autoload.php
+    // ============================================================
+
+    // 项目名称：格式为 "作者名/项目名"
+    "name": "learner/php-learning-project",
+
+    // 项目描述
+    "description": "PHP 学习项目 - 包含基础语法、面向对象、数组、数据库、高级特性和设计模式的完整学习示例",
+
+    // 项目类型：library 表示库项目
+    "type": "library",
+
+    // 许可证
+    "license": "MIT",
+
+    // 自动加载配置
+    "autoload": {
+        // PSR-4 自动加载规范
+        // PSR-4 是 PHP Framework Interop Group 制定的自动加载标准
+        // 规则：命名空间前缀 => 对应的目录路径
+        // 当使用 use App\Basics\Basics 时，会自动加载 src/Basics/Basics.php
+        "psr-4": {
+            // "App\\" 是命名空间前缀，对应 src/ 目录
+            // 所有 src/ 目录下的类都应该使用 App 命名空间
+            "App\\": "src/"
+        }
+    },
+
+    // 开发环境依赖（仅在开发时需要，生产环境不需要）
+    "require-dev": {
+        // PHPUnit 测试框架
+        "phpunit/phpunit": "^10.0"
+    },
+
+    // 项目依赖的最低 PHP 版本
+    "require": {
+        // 要求 PHP 版本 >= 8.1（因为使用了枚举等 PHP 8.1+ 特性）
+        "php": ">=8.1",
+        // PDO 扩展（数据库操作）
+        "ext-pdo": "*",
+        // MBString 扩展（多字节字符串处理）
+        "ext-mbstring": "*"
+    }
+}

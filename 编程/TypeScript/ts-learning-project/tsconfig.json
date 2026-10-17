@@ -1,0 +1,82 @@
+{
+  // TypeScript 编译配置文件
+  // compilerOptions: 编译选项，控制 TypeScript 如何将 TS 代码编译为 JS 代码
+  "compilerOptions": {
+    // target: 指定编译后的 JavaScript 版本
+    // ES2020 支持较新的 JS 特性，同时兼容性较好
+    "target": "ES2020",
+
+    // module: 指定使用的模块系统
+    // commonjs 是 Node.js 默认的模块系统，兼容性最好
+    "module": "commonjs",
+
+    // lib: 指定编译时需要包含的库文件
+    // ES2020 包含 ES2020 的所有内置对象和方法
+    // DOM 包含浏览器 DOM API（如果需要在浏览器环境运行）
+    "lib": ["ES2020"],
+
+    // outDir: 指定编译输出目录
+    // 所有编译后的 JS 文件将输出到 dist 目录
+    "outDir": "./dist",
+
+    // rootDir: 指定源文件根目录
+    // 保持输出目录结构与源文件结构一致
+    "rootDir": "./src",
+
+    // strict: 启用所有严格类型检查选项
+    // 这是 TypeScript 最推荐的配置，可以最大程度地避免类型错误
+    "strict": true,
+
+    // esModuleInterop: 启用 ES 模块与 CommonJS 模块的互操作性
+    // 允许使用 import 语句导入 CommonJS 模块
+    "esModuleInterop": true,
+
+    // skipLibCheck: 跳过对声明文件（.d.ts）的类型检查
+    // 可以加快编译速度，通常声明文件都是正确的
+    "skipLibCheck": true,
+
+    // forceConsistentCasingInFileNames: 强制文件名大小写一致
+    // 避免在不同操作系统上因文件名大小写不同导致的问题
+    "forceConsistentCasingInFileNames": true,
+
+    // resolveJsonModule: 允许导入 JSON 文件
+    // 可以直接 import 一个 .json 文件并获得类型推断
+    "resolveJsonModule": true,
+
+    // declaration: 生成声明文件（.d.ts）
+    // 如果你的项目是一个库，需要提供类型定义时开启
+    "declaration": true,
+
+    // declarationMap: 生成声明文件的 source map
+    // 方便调试时跳转到类型定义的源文件
+    "declarationMap": true,
+
+    // sourceMap: 生成 source map 文件
+    // 方便调试时在浏览器或 Node.js 中查看原始 TS 代码
+    "sourceMap": true,
+
+    // noImplicitAny: 不允许隐式的 any 类型
+    // 当 TypeScript 无法推断类型时，会报错而不是默认使用 any
+    // 这是 strict 模式的一部分，这里单独列出以便理解
+    "noImplicitAny": true,
+
+    // strictNullChecks: 严格的 null 检查
+    // null 和 undefined 不能赋值给其他类型，必须显式处理
+    // 这是 strict 模式的一部分
+    "strictNullChecks": true,
+
+    // experimentalDecorators: 启用实验性的装饰器特性
+    // 装饰器是 TypeScript 的高级特性，常用于框架（如 Angular、NestJS）
+    "experimentalDecorators": true,
+
+    // emitDecoratorMetadata: 输出装饰器的元数据
+    // 配合装饰器使用，用于反射等高级功能
+    "emitDecoratorMetadata": true
+  },
+  // include: 指定需要编译的文件或目录
+  // 这里包含 src 目录下的所有 TypeScript 文件
+  "include": ["src/**/*"],
+  // exclude: 指定需要排除的文件或目录
+  // 排除 node_modules 和编译输出目录
+  "exclude": ["node_modules", "dist"]
+}

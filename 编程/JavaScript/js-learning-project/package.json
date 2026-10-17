@@ -1,0 +1,29 @@
+{
+  "name": "js-learning-project",
+  "version": "1.0.0",
+  "description": "JavaScript 深度学习项目 - 涵盖基础语法、面向对象、高级特性、异步编程、设计模式、数据结构等核心知识",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "basics": "node basics/01_types_and_operators.js && node basics/02_functions.js",
+    "oop": "node oop/oop.js",
+    "advanced": "node advanced/array_methods.js && node advanced/es6_features.js",
+    "async": "node async/async_programming.js",
+    "patterns": "node patterns/design_patterns.js",
+    "data": "node data/structures.js"
+  },
+  "keywords": [
+    "javascript",
+    "es6",
+    "learning",
+    "tutorial",
+    "nodejs"
+  ],
+  "author": "JavaScript Learner",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

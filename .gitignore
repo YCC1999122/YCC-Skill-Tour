@@ -1,0 +1,38 @@
+# ===== Dependencies / Package managers =====
+node_modules/
+vendor/
+
+# ===== Build outputs =====
+dist/
+build/
+out/
+bin/
+obj/
+target/
+Debug/
+Release/
+*.exe
+*.dll
+*.o
+*.obj
+*.hex
+*.class
+*.jar
+
+# ===== Python =====
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# ===== Java / JVM =====
+.gradle/
+
+# ===== OS / Editor =====
+.DS_Store
+Thumbs.db
+.vs/
+.idea/
+*.user
+*.suo

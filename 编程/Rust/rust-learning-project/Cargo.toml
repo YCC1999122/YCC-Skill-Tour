@@ -1,0 +1,78 @@
+# ============================================================
+# Cargo.toml - Rust项目配置文件
+# ============================================================
+# 本文件是Rust项目的核心配置文件，由Cargo构建工具读取和管理
+# Cargo是Rust的官方包管理器和构建工具，类似于npm(Node.js)或pip(Python)
+#
+# Cargo.toml使用TOML格式（Tom's Obvious, Minimal Language），
+# 这是一种简洁、易读的配置文件格式
+# ============================================================
+
+# ---------- [package] 部分 ----------
+# 定义项目的基本元信息
+[package]
+# name: 项目名称，也是 crate 的名称
+# crate 是 Rust 中的编译单元，可以是库（library）或二进制程序（binary）
+name = "rust-learning-project"
+
+# version: 项目版本号，遵循语义化版本（Semantic Versioning）规范
+# 格式：主版本号.次版本号.修订号
+#   - 主版本号：不兼容的API修改
+#   - 次版本号：向下兼容的功能性新增
+#   - 修订号：向下兼容的问题修正
+version = "0.1.0"
+
+# edition: 指定使用的Rust版本（edition）
+# Rust有不同的edition，每个edition可以引入新的语法特性
+# 2021 edition 是目前最新的稳定版本，包含了许多重要改进
+# 可选值：2015, 2018, 2021, 2024（2024目前在beta阶段）
+edition = "2021"
+
+# authors: 项目作者列表（可选）
+# 格式：["姓名 <邮箱>"]
+authors = ["Rust Learner <learner@example.com>"]
+
+# description: 项目描述（可选，发布到crates.io时需要）
+description = "一个完整的Rust语言学习项目，包含基础语法、所有权、结构体、Trait、集合、并发、高级特性和设计模式"
+
+# license: 项目许可证（可选，发布到crates.io时需要）
+license = "MIT"
+
+# ---------- [dependencies] 部分 ----------
+# 定义项目的外部依赖（crates）
+# Cargo会自动从crates.io（Rust的官方包注册表）下载和管理依赖
+#
+# 依赖的指定方式：
+#   1. 简单版本号：crate_name = "1.0"  （自动使用兼容1.0.x的最新版本）
+#   2. 指定特性：crate_name = { version = "1.0", features = ["feature1"] }
+#   3. 本地路径：crate_name = { path = "../local-crate" }
+#   4. Git仓库：crate_name = { git = "https://github.com/xxx/xxx.git" }
+#
+# 本学习项目为了保持简洁，暂时不添加外部依赖
+# 所有示例都使用标准库（std）完成
+[dependencies]
+
+# ---------- [dev-dependencies] 部分 ----------
+# 开发依赖，仅在测试、示例、基准测试等开发场景下使用
+# 不会被编译进最终的发布版本
+[dev-dependencies]
+
+# ---------- [profile.dev] 部分 ----------
+# 开发模式（debug模式）的编译配置
+# 使用 `cargo build` 或 `cargo run` 时默认使用此配置
+# 特点：编译快、包含调试信息、运行速度较慢（无优化）
+[profile.dev]
+# opt-level: 优化级别，0-3
+#   0: 无优化（默认，编译最快）
+#   1: 基础优化
+#   2: 更多优化
+#   3: 最大优化（编译最慢，运行最快）
+opt-level = 0
+
+# ---------- [profile.release] 部分 ----------
+# 发布模式（release模式）的编译配置
+# 使用 `cargo build --release` 或 `cargo run --release` 时使用此配置
+# 特点：编译慢、无调试信息、运行速度最快（全优化）
+[profile.release]
+opt-level = 3  # 最高优化级别
+lto = true     # 启用链接时优化（Link Time Optimization），进一步优化性能

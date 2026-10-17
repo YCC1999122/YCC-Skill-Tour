@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Maven项目配置文件（pom.xml）
+    POM = Project Object Model，Maven用这个文件描述项目的基本信息、依赖、构建配置等
+    这是Maven项目的核心配置文件，所有构建行为都由它来控制
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- POM模型版本，固定为4.0.0，这是当前Maven使用的标准版本 -->
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--
+        groupId：组织/项目组的唯一标识符，通常用反向域名
+        例如 com.learning 表示这是一个学习项目组织
+        作用：在Maven仓库中唯一标识一个项目组，类似于Java的包名
+    -->
+    <groupId>com.learning</groupId>
+
+    <!--
+        artifactId：项目在组内的唯一标识符，即项目名称
+        作用：在groupId下唯一标识一个具体的项目/模块
+    -->
+    <artifactId>java-learning-project</artifactId>
+
+    <!--
+        version：项目的版本号
+        SNAPSHOT表示快照版本，即开发中的版本，可以频繁更新
+        正式发布版本通常去掉SNAPSHOT，如1.0.0
+    -->
+    <version>1.0-SNAPSHOT</version>
+
+    <!--
+        packaging：项目打包方式
+        可选值：jar（默认，Java普通项目）、war（Web项目）、pom（父项目）、ear等
+        这里是一个普通Java学习项目，打包成jar即可
+    -->
+    <packaging>jar</packaging>
+
+    <!-- 项目名称，可选，用于描述性显示 -->
+    <name>Java Learning Project</name>
+
+    <!-- 项目描述，可选，简要说明项目用途 -->
+    <description>Java从入门到精通学习项目 - 包含基础语法、面向对象、集合框架、并发编程、高级特性、设计模式</description>
+
+    <!--
+        properties：自定义属性区
+        可以在这里定义变量，在pom.xml其他地方通过${变量名}引用
+        好处：统一管理版本号，修改时只需改一处
+    -->
+    <properties>
+        <!-- 项目源代码的字符编码，设为UTF-8避免中文乱码 -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!--
+            Java源代码编译版本，即使用哪个版本的语法
+            11表示使用Java 11的语法特性
+            Java 11是LTS（长期支持）版本，企业中使用广泛
+        -->
+        <maven.compiler.source>11</maven.compiler.source>
+
+        <!-- Java目标字节码版本，即编译生成的class文件兼容哪个版本的JVM -->
+        <maven.compiler.target>11</maven.compiler.target>
+    </properties>
+
+    <!--
+        dependencies：项目依赖配置区
+        所有需要引入的第三方库都在这里声明
+        Maven会自动从中央仓库下载这些依赖及其传递依赖
+    -->
+    <dependencies>
+        <!--
+            JUnit 5 单元测试依赖
+            scope=test表示只在测试阶段有效，不会打包到最终产物中
+            这里暂时注释掉，学习项目可以不需要测试依赖
+        -->
+        <!--
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.9.2</version>
+            <scope>test</scope>
+        </dependency>
+        -->
+    </dependencies>
+
+    <!--
+        build：构建配置区
+        可以配置各种Maven插件来自定义构建过程
+    -->
+    <build>
+        <!--
+            finalName：构建生成的最终文件名（不含扩展名）
+            默认是 ${artifactId}-${version}，这里自定义一下
+        -->
+        <finalName>java-learning</finalName>
+
+        <!-- 插件配置 -->
+        <plugins>
+            <!--
+                maven-compiler-plugin：编译插件
+                用于配置Java源代码的编译参数
+                虽然在properties中已经配置了source和target，
+                但显式声明插件可以更精细地控制编译行为
+            -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <!-- 源代码版本，也可以直接写11 -->
+                    <source>${maven.compiler.source}</source>
+                    <!-- 目标字节码版本 -->
+                    <target>${maven.compiler.target}</target>
+                    <!-- 编译器使用的字符编码 -->
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+
+            <!--
+                maven-jar-plugin：打jar包插件
+                可以配置MANIFEST.MF文件，指定主类
+                这样生成的jar包可以直接用 java -jar 命令运行
+            -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <!-- 是否在MANIFEST.MF中添加Class-Path条目 -->
+                            <addClasspath>true</addClasspath>
+                            <!--
+                                指定主类（包含main方法的类）
+                                这样运行 java -jar java-learning.jar 时会自动执行这个类
+                            -->
+                            <mainClass>com.learning.Main</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
